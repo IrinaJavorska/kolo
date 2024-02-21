@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Půjčovna - Objednávka</title>
+    <script src="script.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h2 {
+        color: #333;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      div {
+        margin-bottom: 10px;
+      }
+      input[type="checkbox"],
+      input[type="radio"],
+      input[type="number"],
+      select,
+      input[type="email"] {
+        margin-right: 10px;
+      }
+      label {
+        margin-right: 10px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #priceCheckResult {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Objednávkový formulář kol</h2>
+
+    <form id="rentalForm">
+      <div>
+        <input type="checkbox" id="mountainBike" name="bikeType" value="500" />
+        <label for="mountainBike">Horské (500 Kč/den)</label>
+        <input
+          type="number"
+          id="mountainBikeCount"
+          name="mountainBikeCount"
+          min="0"
+          value="0"
+        />
+      </div>
+      <div>
+        <input type="checkbox" id="kidsBike" name="bikeType" value="200" />
+        <label for="kidsBike">Dětské (200 Kč/den)</label>
+        <input
+          type="number"
+          id="kidsBikeCount"
+          name="kidsBikeCount"
+          min="0"
+          value="0"
+        />
+      </div>
+      <div>
+        <input type="checkbox" id="roadBike" name="bikeType" value="1500" />
+        <label for="roadBike">Silniční (1500 Kč/den)</label>
+        <input
+          type="number"
+          id="roadBikeCount"
+          name="roadBikeCount"
+          min="0"
+          value="0"
+        />
+      </div>
+      <div>
+        <input type="checkbox" id="gravelBike" name="bikeType" value="2500" />
+        <label for="gravelBike">Gravel (2500 Kč/den)</label>
+        <input
+          type="number"
+          id="gravelBikeCount"
+          name="gravelBikeCount"
+          min="0"
+          value="0"
+        />
+      </div>
+      <div>
+        <label for="rentalDays">Počet dnů zápůjčky:</label>
+        <select id="rentalDays" name="rentalDays">
+          <option value="5">5 dnů</option>
+          <option value="7">Týden</option>
+          <option value="14">14 dní</option>
+          <option value="30">Měsíc</option>
+        </select>
+      </div>
+      <div>
+        <input type="radio" id="roofRack" name="rack" value="5" />
+        <label for="roofRack">Cyklonosič střešní (+5%)</label><br />
+        <input type="radio" id="towbarRack" name="rack" value="10" />
+        <label for="towbarRack">Cyklonosič na tažné zařízení (+10%)</label
+        ><br />
+        <input type="radio" id="noRack" name="rack" value="0" checked />
+        <label for="noRack">Není třeba cyklonosič</label>
+      </div>
+      <div>
+        <button type="button" onclick="calculateTotal()">Vypočítat cenu</button>
+      </div>
+      <div>
+        <label for="userOffer">Vaše nabídnutá cena:</label>
+        <input type="number" id="userOffer" name="userOffer" />
+      </div>
+      <div id="priceCheckResult"></div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <button type="submit" onclick="return validateForm()">Odeslat</button>
+    </form>
+  </body>
+</html>
